@@ -492,8 +492,10 @@ function updateSaves() {
   for (let i=0; i < localStorage.length; i++) {
     let o = document.createElement("option");
     o.value = localStorage.key(i);
-    o.innerText = new Date(parseInt(localStorage.key(i))).toLocaleString();
-    savesInput.appendChild(o);
+    if (!isNaN(parseInt(localStorage.key(i)))) {
+        o.innerText = new Date(parseInt(localStorage.key(i))).toLocaleString();
+        savesInput.appendChild(o);
+    }
   }
 }
 
