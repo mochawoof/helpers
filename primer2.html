@@ -1,0 +1,54 @@
+<body>
+<textarea id="out" rows="20" cols="50" readonly></textarea>
+<p><button onclick="start()">Generate</button> up to <input id="max" type="number" value="100"> <button onclick="stop()">Stop</button></p>
+</body>
+<script>
+let stopped = true;
+let primes = [];
+let counter;
+
+let outInput = document.querySelector("#out");
+let maxInput = document.querySelector("#max");
+function isPrime(n) {
+	for (let i=2; i < n; i++) {
+		if (n % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function updateOut() {
+	outInput.innerText = JSON.stringify(primes)
+		.replaceAll("[", "")
+		.replaceAll("]", "");
+	outInput.scroll(0, outInput.scrollHeight);
+}
+function iter() {
+	if (!stopped && counter < maxInput.value) {
+		counter++;
+		if (isPrime(counter)) {
+			primes.push(counter);
+			updateOut();
+		}
+		setTimeout(iter, 0);
+	} else {
+		stopped = true;
+	}
+}
+function reset() {
+	primes = [2];
+	updateOut();
+}
+function start() {
+	if (stopped) {
+		stopped = false;
+		counter = primes[primes.length - 1];
+		iter();
+	}
+}
+function stop() {
+	stopped = true;
+}
+reset();
+</script>
