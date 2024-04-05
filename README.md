@@ -4,7 +4,7 @@
 Stands for "light java". It's a shell script designed to easily compile Java programs.
 ## <a href="bash/mochabuilder.bat">bash/mochabuilder.bat</a>
 A revision of lj.sh designed for Windows.
-> Instead of relying on `JAVA_HOME`, mochabuilder uses a constant inside the script to find the JDK. Make sure to change it!
+> mochabuilder uses constants inside the script for the JDK path and main class. Make sure to change them!
 
 ## <a href="java/Helper.java">java/Helper.java</a>
 Features numerous static methods to easily grab bundled resources as Images, Strings and more!
